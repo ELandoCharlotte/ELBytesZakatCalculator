@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_calculator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_bg">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:titleTextColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/toolbarLogo"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitCenter"
+                android:contentDescription="@string/app_name" />
+        </FrameLayout>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <!-- Top Section (Purple) for Results -->
+    <ScrollView
+        android:id="@+id/topScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/bottomSheet">
+
+        <LinearLayout
+            android:id="@+id/topSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="12dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="12dp">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvResultLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Zakat Payable"
+                android:textColor="#E0E0E0"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/tvTotalZakatAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RM 0.00"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginTop="0dp" />
+
+            <TextView
+                android:id="@+id/tvResultDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#E0E0E0"
+                android:textSize="11sp"
+                android:gravity="center"
+                android:layout_marginTop="4dp"
+                android:lineSpacingExtra="1dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Section (White Sheet) for Inputs -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:id="@+id/bottomSheetContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@color/white">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/weight_hint">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/value_hint">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/rgType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp">
+
+                <RadioButton
+                    android:id="@+id/rbKeeping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/type_keeping"
+                    android:checked="true"
+                    android:minHeight="40dp" />
+
+                <RadioButton
+                    android:id="@+id/rbWearing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/type_wearing"
+                    android:minHeight="40dp" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvThresholdNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Note: The X is 85 grams for gold keeping category and 200 grams for wearing category"
+                android:textSize="11sp"
+                android:textColor="#757575"
+                android:gravity="center"
+                android:layout_marginTop="2dp" />
+
+            <Button
+                android:id="@+id/btnCalculate"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/calculate"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/purple_bg"
+                android:textColor="@color/white"
+                app:cornerRadius="12dp" />
+
+            <Button
+                android:id="@+id/btnClear"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/clear"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="@color/gold"
+                android:textColor="@color/black"
+                app:cornerRadius="12dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

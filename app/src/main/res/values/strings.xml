@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Gold Zakat Calculator</string>
+    <string name="calculate">Calculate</string>
+    <string name="clear">Clear</string>
+    <string name="weight_hint">Enter gold weight (grams)</string>
+    <string name="value_hint">Enter gold value (RM/gram)</string>
+    <string name="type_keeping">Keeping</string>
+    <string name="type_wearing">Wearing</string>
+    <string name="about">About Developer</string>
+    <string name="share">Share</string>
+    <string name="welcome_msg">Welcome to ELBYTES\nGold Zakat Calculator</string>
+    <string name="login">Login</string>
+</resources>
