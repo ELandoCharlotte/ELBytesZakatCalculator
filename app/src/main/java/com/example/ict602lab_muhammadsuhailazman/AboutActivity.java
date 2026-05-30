@@ -99,7 +99,7 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private void shareApp() {
-        String shareBody = "Check out this Gold Zakat Calculator app by ELBYTES! Download it from GitHub: https://github.com/yourusername/GoldZakatCalculator";
+        String shareBody = "Check out this Gold Zakat Calculator app by ELBYTES! Download it from GitHub: https://github.com/ELandoCharlotte/ELBytesZakatCalculator.git";
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Gold Zakat Calculator");
