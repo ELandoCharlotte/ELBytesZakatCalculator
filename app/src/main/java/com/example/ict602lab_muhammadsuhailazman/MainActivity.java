@@ -2,7 +2,6 @@ package com.example.ict602lab_muhammadsuhailazman;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
@@ -59,14 +58,17 @@ public class MainActivity extends AppCompatActivity {
             toolbar.setPadding(0, systemBars.top, 0, 0);
             
             // Add padding to the bottom sheet content instead
+            float density = getResources().getDisplayMetrics().density;
+            int padding24 = Math.round(24 * density);
             findViewById(R.id.bottomSheetContent).setPadding(
-                dpToPx(24), dpToPx(24), dpToPx(24), systemBars.bottom + dpToPx(24)
+                padding24, padding24, padding24, systemBars.bottom + padding24
             );
             return insets;
         });
 
         tvTitle = findViewById(R.id.tvTitle);
-        setGoldColoredTitle(tvTitle, getString(R.string.app_name));
+        // setGoldColoredTitle(tvTitle, getString(R.string.app_name));
+        tvTitle.setText(getString(R.string.app_name));
 
         etWeight = findViewById(R.id.etWeight);
         etValue = findViewById(R.id.etValue);
@@ -83,22 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
         btnCalculate.setOnClickListener(v -> calculateZakat());
         btnClear.setOnClickListener(v -> clearFields());
-    }
-
-    private int dpToPx(int dp) {
-        float density = getResources().getDisplayMetrics().density;
-        return Math.round(dp * density);
-    }
-
-    private void setGoldColoredTitle(TextView textView, String fullText) {
-        SpannableString spannableString = new SpannableString(fullText);
-        int goldStart = fullText.indexOf("Gold");
-        if (goldStart != -1) {
-            int goldEnd = goldStart + 4;
-            int goldColor = ContextCompat.getColor(this, R.color.gold);
-            spannableString.setSpan(new ForegroundColorSpan(goldColor), goldStart, goldEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-        textView.setText(spannableString);
     }
 
     private void calculateZakat() {
@@ -119,9 +105,11 @@ public class MainActivity extends AppCompatActivity {
             double weightDiff = weight - uruf;
             
             // 2. Zakat payable (Value)
-            double zakatPayableValue = 0;
+            double zakatPayableValue;
             if (weightDiff > 0) {
                 zakatPayableValue = weightDiff * value;
+            } else {
+                zakatPayableValue = 0;
             }
             
             // 3. Total zakat (2.5%)
@@ -200,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void shareApp() {
-        String shareBody = "Check out this Gold Zakat Calculator app by ELBYTES! Download it from GitHub: https://github.com/yourusername/GoldZakatCalculator";
+        String shareBody = "Check out this Gold Zakat Calculator app by ELBYTES! Download it from GitHub: https://github.com/ELandoCharlotte/ELBytesZakatCalculator.git";
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Gold Zakat Calculator");

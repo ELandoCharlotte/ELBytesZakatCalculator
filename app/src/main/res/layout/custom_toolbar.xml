@@ -9,6 +9,6 @@
         android:src="@drawable/elbytes_logo"
         android:scaleType="fitCenter"
         android:layout_gravity="center"
-        android:contentDescription="Logo" />
+        android:contentDescription="@string/logo_description" />
 
 </FrameLayout>

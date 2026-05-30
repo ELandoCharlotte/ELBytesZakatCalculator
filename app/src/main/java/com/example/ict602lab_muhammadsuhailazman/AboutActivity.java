@@ -2,7 +2,6 @@ package com.example.ict602lab_muhammadsuhailazman;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ForegroundColorSpan;
@@ -68,23 +67,12 @@ public class AboutActivity extends AppCompatActivity {
                         "Gold Wearing: 200 grams\n\n" +
 
                         "GitHub URL:\n" +
-                        "https://github.com/yourusername/GoldZakatCalculator\n\n" +
+                        "https://github.com/ELandoCharlotte/ELBytesZakatCalculator.git\n\n" +
 
                         "© 2026 ELBYTES. All rights reserved.\n\n";
 
         textAbout.setText(aboutText);
         textAbout.setMovementMethod(LinkMovementMethod.getInstance());
-    }
-
-    private void setGoldColoredTitle(TextView textView, String fullText) {
-        SpannableString spannableString = new SpannableString(fullText);
-        int goldStart = fullText.indexOf("Gold");
-        if (goldStart != -1) {
-            int goldEnd = goldStart + 4;
-            int goldColor = ContextCompat.getColor(this, R.color.gold);
-            spannableString.setSpan(new ForegroundColorSpan(goldColor), goldStart, goldEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        }
-        textView.setText(spannableString);
     }
 
     @Override

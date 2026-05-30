@@ -10,4 +10,9 @@
     <string name="share">Share</string>
     <string name="welcome_msg">Welcome to ELBYTES\nGold Zakat Calculator</string>
     <string name="login">Login</string>
+    <string name="home_title">Home</string>
+    <string name="logo_description">Logo</string>
+    <string name="total_zakat_label">Total Zakat Payable</string>
+    <string name="default_amount">RM 0.00</string>
+    <string name="threshold_note">Note: The X is 85 grams for gold keeping category and 200 grams for wearing category</string>
 </resources>
